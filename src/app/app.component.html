@@ -1,27 +1,3 @@
-<div class="relative flex flex-col h-screen w-full md:w-[767px] mx-auto">
-  <header class="flex flex-col">
-    <nav
-      class="flex w-full justify-around items-center h-14 rounded bg-black"
-    >
-      <app-link-button url="/home">
-        <app-svg-icon [style]="'w-6'" [icon]="HOME"/>
-      </app-link-button>
-      @if (!logged) {
-        <app-link-button label="Sign Up" url="/" />
-        <app-link-button label="Log In" url="/" />
-      } @else {
-        <app-link-button url="/">
-          <app-svg-icon [style]="'w-6'" [icon]="CREATE"/>
-        </app-link-button>
-
-        <app-link-button url="/">
-          <app-svg-icon [style]="'w-6'" [icon]="TASKS"/>
-        </app-link-button>
-
-        <app-link-button url="/">
-          <app-svg-icon [style]="'w-6'" [icon]="LOGOUT"/>
-        </app-link-button>
-      }
-    </nav>
-  </header>
-</div>
+<app-main>
+  <app-header />
+</app-main>
