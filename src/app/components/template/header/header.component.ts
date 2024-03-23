@@ -16,5 +16,11 @@ export class HeaderComponent {
   CREATE = Icons.CREATE;
   TASKS = Icons.TASKS;
   LOGOUT = Icons.LOGOUT;
+  MENU_HAMBURGER = Icons.MENU_HAMBURGER;
   logged = true;
+
+  showMenu = false;
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
+  }
 }

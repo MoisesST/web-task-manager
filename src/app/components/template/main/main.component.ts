@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-main',
   standalone: true,
   template: `
-    <div class="relative flex flex-col h-screen w-full md:w-[767px] mx-auto">
+    <div class="relative flex flex-col w-full md:w-[767px] mx-auto">
       <ng-content />
     </div>
   `,
