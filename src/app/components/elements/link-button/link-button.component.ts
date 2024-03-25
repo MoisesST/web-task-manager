@@ -10,12 +10,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       [routerLink]="url"
       routerLinkActive="text-sky-500"
       class="
-        flex gap-1 justify-center items-center mx-1 text-xs sm:text-sm
+        flex gap-2 justify-center items-center mx-1 text-xs sm:text-sm
         font-semibold outline-none transition-all hover:text-sky-500
       "
     >
-      {{ label }}
       <ng-content /> <!-- slot -->
+      {{ label }}
     </a>
   `,
 })
