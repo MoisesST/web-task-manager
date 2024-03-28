@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
+import { TitleComponent } from '../../elements/title/title.component';
 
 @Component({
   selector: 'app-main',
   standalone: true,
+  imports: [TitleComponent],
   template: `
     <main>
-      <div class="relative flex flex-col h-screen w-full md:w-[767px] mx-auto">
-        <ng-content />
+      <div class="w-full md:w-[1000px] mx-auto">
+        <app-title name="Home - Test" />
       </div>
     </main>
   `,
