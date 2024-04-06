@@ -7,6 +7,9 @@ import { HeaderComponent } from './components/template/header/header.component';
   selector: 'app-root',
   standalone: true,
   imports: [MainComponent, HeaderComponent],
-  templateUrl: './app.component.html'
+  template: `
+    <app-header />
+    <app-main />
+  `,
 })
 export class AppComponent {}
