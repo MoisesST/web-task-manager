@@ -1,17 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+
+import { LinkButtonComponent } from '../../elements/link-button/link-button.component';
 
 @Component({
   selector: 'app-page-not-found',
   standalone: true,
-  imports: [RouterLink],
+  imports: [LinkButtonComponent],
   template: `
-    <div
-      class="
-        flex flex-col justify-center items-center h-screen text-lg
-      "
-    >
-      <div class="flex">
+    <div class="flex flex-col items-center text-lg mt-10 ">
+      <div class="flex mb-10">
         <div>
           <p>404</p>
         </div>
@@ -21,9 +18,7 @@ import { RouterLink } from '@angular/router';
         </div>
       </div>
 
-      <a routerLink="/home" class="mt-10 text-sm hover:text-gray-400 transition-all">
-        Go Home
-      </a>
+      <app-link-button label="Go Home" url="/home" />
     </div>
   `,
 })
