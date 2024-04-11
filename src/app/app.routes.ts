@@ -9,6 +9,6 @@ export const routes: Routes = [
   { path: 'home', title: 'Home', component: ListTasksComponent },
   { path: 'create-task', title: 'Create Task', component: CreateTaskComponent },
   { path: 'edit-task', title: 'Edit Task', component: EditTaskComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', title: 'Page Not Found', component: PageNotFoundComponent },
 ];
