@@ -1,6 +1,9 @@
 <header class="flex flex-col bg-black">
   <nav
-    class="sm:flex hidden flex-row w-full justify-evenly mx-auto items-start sm:items-center sm:h-14 rounded"
+    class="
+      sm:flex hidden flex-row w-full justify-evenly mx-auto items-start
+      sm:items-center sm:h-14 rounded
+    "
   >
     <app-link-button url="/home" label="Home">
       <app-svg-icon [style]="'w-6'" [icon]="HOME"/>
@@ -20,7 +23,10 @@
   </nav>
   <!-- nav mobile -->
   <nav
-    class="justify-center bg-black w-full z-50 flex  sm:hidden flex-col items-end relative"
+    class="
+      justify-center bg-black w-full z-50 flex  sm:hidden flex-col items-end
+      relative
+    "
   >
     <button (click)="toggleMenu()" class="float-right p-4">
       <app-svg-icon [style]="'w-6'" [icon]="MENU_HAMBURGER"/>
