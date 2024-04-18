@@ -1,0 +1,22 @@
+<div class="flex justify-center items-center h-20">
+  <app-title name="Sign Up" />
+</div>
+
+<form class="flex flex-col gap-4" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <app-input
+    id="name"
+    formControlName="name"
+    placeholder="Enter your name"
+  />
+  <app-input
+    id="email"
+    formControlName="email"
+    placeholder="Enter your email"
+  />
+  <app-input
+    id="password"
+    formControlName="password"
+    placeholder="Enter your password"
+  />
+  <app-button label="Subimit" [isDisabled]="false" />
+</form>
