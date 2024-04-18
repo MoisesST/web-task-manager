@@ -1,29 +1,5 @@
 <div class="flex justify-center items-center h-20">
   <app-title name="Home" />
 </div>
+<app-contador/>
 
-<div class="flex justify-between my-4 text-xs sm:text-sm font-semibold">
-  <div class="flex gap-2">
-    <p>Created tasks</p>
-    <div class="mr-2 px-2 bg-stone-700 rounded-full">
-      <span>{{ 5 }}</span>
-    </div>
-  </div>
-  <div class="flex gap-2">
-    <p>Done</p>
-    <div class="px-2 bg-stone-700 rounded-full">
-      <span>{{ 0 + ' / ' + 5 }}</span>
-    </div>
-  </div>
-</div>
-
-<div
-  class="
-    flex flex-col justify-center h-96 pt-4 overflow-auto border-y-2
-    border-stone-700 [&::-webkit-scrollbar]:hidden
-  "
->
-  @for(task of tasks; track task) {
-    <app-task />
-  } @empty { <app-no-tasks/> }
-</div>
