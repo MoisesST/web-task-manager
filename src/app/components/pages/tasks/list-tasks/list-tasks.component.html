@@ -23,7 +23,7 @@
     border-stone-700 [&::-webkit-scrollbar]:hidden
   "
 >
-  @for(task of tasks; track task) {
-    <app-task />
+  @for(task of mockTasks; track task.id) {
+    <app-task [id]="task.id" />
   } @empty { <app-no-tasks/> }
 </div>

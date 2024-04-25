@@ -39,7 +39,7 @@ import { SvgIconComponent } from '../svg-icon/svg-icon.component';
             [icon]="TRASH"
           />
         </button>
-        <app-link-button url="/">
+        <app-link-button [url]="'/edit-task/' + id">
           <app-svg-icon [style]="'w-5'" [icon]="EDIT"/>
         </app-link-button>
       </div>
@@ -47,6 +47,7 @@ import { SvgIconComponent } from '../svg-icon/svg-icon.component';
   `,
 })
 export class TaskComponent {
+  @Input() id = '';
   @Input() description = '';
   TRASH = Icons.TRASH;
   EDIT = Icons.EDIT;
