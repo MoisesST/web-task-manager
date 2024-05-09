@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -15,8 +15,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       "
       [disabled]="isDisabled"
       [ngClass]="{ 'bg-stone-500 hover:bg-stone-500' : isDisabled }"
-      (click)="onSubmit()"
-      (submit)="onSubmit()"
     >
       {{ label }}
       <ng-content/>
@@ -27,10 +25,4 @@ export class ButtonComponent {
   @Input() style = '';
   @Input() label = '';
   @Input() isDisabled = true;
-
-  @Output() submitEvent = new EventEmitter<any>();
-
-  onSubmit() {
-    this.submitEvent.emit(alert("Hello, World!!"));
-  }
 }

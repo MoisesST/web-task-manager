@@ -1,0 +1,73 @@
+
+<div class="flex justify-center items-center h-20">
+  <app-title name="Sign Up" />
+</div>
+
+<form
+  [formGroup]="signupForm"
+  (ngSubmit)="onSubmit()"
+  class="flex flex-col gap-4"
+>
+  <input
+    id="name"
+    name="name"
+    formControlName="name"
+    type="text"
+    placeholder="Enter your name"
+    pattern="^(\s?[A-ZÀ-Ú][a-zà-ú]*)+(\s[a-zà-ú]*)?(\s[A-ZÀ-Ú][a-zà-ú]*)+"
+    required
+    class="
+      w-full h-10 px-3 rounded outline-none transition-all bg-stone-800
+      placeholder-stone-500 focus:ring-1 focus:ring-sky-500
+      invalid:ring-pink-500 invalid:text-pink-600
+      focus:invalid:ring-pink-500
+    "
+  >
+
+  @if (name.invalid && name.touched) {
+    <p class="text-xs md:text-sm text-pink-500">Enter a valid name.</p>
+  }
+
+  <input
+    id="email"
+    name="email"
+    formControlName="email"
+    type="email"
+    formControlName="email"
+    placeholder="Enter your email"
+    pattern="^[\w\-\.]+@([\w\-]+\.)+[\w\-]{2,4}$"
+    required
+    class="
+      w-full h-10 px-3 rounded outline-none transition-all bg-stone-800
+      placeholder-stone-500 focus:ring-1 focus:ring-sky-500
+      invalid:ring-pink-500 invalid:text-pink-600
+      focus:invalid:ring-pink-500
+    "
+  >
+
+  @if (email.invalid && email.touched) {
+    <p class="text-xs md:text-sm text-pink-500">Enter a valid email.</p>
+  }
+
+  <input
+    id="password"
+    name="password"
+    formControlName="password"
+    type="password"
+    placeholder="Enter your password"
+    pattern="^[a-zA-Z0-9_@#\\&\\$]{6,18}$"
+    required
+    class="
+      w-full h-10 px-3 rounded outline-none transition-all bg-stone-800
+      placeholder-stone-500 focus:ring-1 focus:ring-sky-500
+      invalid:ring-pink-500 invalid:text-pink-600
+      focus:invalid:ring-pink-500
+    "
+  >
+
+  @if (password.invalid && password.touched) {
+    <p class="text-xs md:text-sm text-pink-500">Enter a valid password.</p>
+  }
+
+  <app-button label="Submit" [isDisabled]="!signupForm.valid" />
+</form>
