@@ -11,6 +11,6 @@ export const routes: Routes = [
   { path: 'signup', title: 'Sign Up', component: SignupComponent },
   { path: 'create-task', title: 'Create Task', component: CreateTaskComponent },
   { path: 'edit-task', title: 'Edit Task', component: EditTaskComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', title: 'Page Not Found', component: PageNotFoundComponent },
 ];
