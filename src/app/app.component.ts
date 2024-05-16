@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
 
-import { MainComponent } from './components/template/main/main.component';
-import { HeaderComponent } from './components/template/header/header.component';
+import { PostComponent } from './post/post.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [MainComponent, HeaderComponent],
+  imports: [PostComponent],
   template: `
-    <app-header />
-    <app-main />
+    <app-post />
   `,
 })
 export class AppComponent {}

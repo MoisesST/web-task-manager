@@ -1,0 +1,11 @@
+@for (post of posts; track post.id) {
+  <div class="flex flex-col w-9/12 m-auto my-4 p-2 bg-slate-500">
+    <div class="flex gap-4 w-full p-2 bg-slate-700 rounded">
+      <h2 class="font-bold text-sky-500">{{ post.id }}</h2>
+      @if (post.id % 2 == 0) {
+        <h3 class="font-medium truncate">{{ post.title | capitalize }}</h3>
+      }
+    </div>
+    <p class="">{{ post.body }}</p>
+  </div>
+}
