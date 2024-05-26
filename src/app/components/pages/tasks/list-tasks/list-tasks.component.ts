@@ -11,66 +11,20 @@ import { TitleComponent } from '../../../elements/title/title.component';
   templateUrl: './list-tasks.component.html',
 })
 export class ListTasksComponent {
-  tasks: object[] = [
-    {
-      id: "10",
-      description: "Drink Water",
-      completed: true
-   },
-   {
-      id: "20",
-      description: "Home Work",
-      completed: false
-   },
-   {
-      id: "30",
-      description: "Lern English",
-      completed: true
-   },
-   {
-      id: "624a",
-      description: "",
-      completed: false
-   },
-   {
-      id: "0dasdf9",
-      description: "Jump in the market",
-      completed: false
-   },
-   {
-      id: "94esef1",
-      description: "",
-      completed: false
-   },
-   {
-      id: "10dsfs",
-      description: "Drink Water",
-      completed: true
-   },
-   {
-      id: "20sd",
-      description: "Home Work",
-      completed: false
-   },
-   {
-      id: "30df",
-      description: "Lern English",
-      completed: true
-   },
-   {
-      id: "624fda",
-      description: "",
-      completed: false
-   },
-   {
-      id: "0dsdca9",
-      description: "Jump in the market",
-      completed: false
-   },
-   {
-      id: "94asdf1",
-      description: "",
-      completed: false
-   }
-  ];
+
+  categories: any;
+
+  getCategories = async () => {
+    const response = await fetch('http://localhost:8000/categories');
+    const data = await response.json();
+    return data;
+  }
+
+  ngOnInit() {
+    this.getCategories().then((data: any) => {
+      this.categories = data;
+    }).catch((error: any) => {
+      console.error(error);
+    })
+  }
 }
