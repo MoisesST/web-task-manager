@@ -2,10 +2,31 @@
   <app-title name="Home" />
 </div>
 
-<div class="flex flex-col">
-  @for(task of categories; track task) {
-      <h1>
-        {{ task.name }}
-      </h1>
-  } @empty { <app-no-tasks/> }
+<div>
+  <form (ngSubmit)="addCategory()" class="flex justify-center">
+    <input
+      [(ngModel)]="categoryName"
+      name="categoryName"
+      type="text"
+      class="border border-gray-300 rounded-lg p-2"
+      placeholder="Nome Categoria"
+      required
+    />
+    <button
+      type="submit"
+      class="bg-blue-500 text-white rounded-lg p-2 ml-2"
+    >
+      Criar Catergoria
+    </button>
+  </form>
 </div>
+<div class="flex flex-col w-full items-center p-4 space-y-2">
+  <div *ngIf="categories.length > 0">
+    <div *ngFor="let task of categories; let i = index;" class="flex flex-row space-x-4">
+      <h1>{{ i + 1 }}. <!-- Exibe o índice começando de 1 -->
+      </h1>
+      <h1>{{ task.name }}</h1>
+    </div>
+  </div>
+</div>
+

@@ -1,8 +1,6 @@
 {
   "users": [],
-
   "tasks": [],
-
   "categories": [
     {
       "id": 1,
@@ -19,5 +17,18 @@
     {
       "id": 4,
       "name": "Other"
-    }]
+    },
+    {
+      "id": 5,
+      "name": "teste"
+    },
+    {
+      "id": 6,
+      "name": "teste"
+    },
+    {
+      "id": "4d60",
+      "name": "qweqweqweqwe"
+    }
+  ]
 }
