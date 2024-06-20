@@ -19,27 +19,19 @@ import { SvgIconComponent } from '../svg-icon/svg-icon.component';
         <p
           [ngClass]="{
             'decoration-2 text-white decoration-pink-600 line-through'
-            : true
+            : isCompleted
           }"
           class="line-clamp-2"
         >
-            {{ description }}
-            Lorem ipsum dolor ptatum dolor autem cupiditate ipsum dolor ptatum
-            dolor autem cupiditate ipsum dolor ptatum dolor ipsum dolor ptatum
-            dolor
+          {{ description }}
         </p>
       </div>
 
       <div class="flex flex-col gap-3 items-center justify-center">
-        <button class="group">
-          <app-svg-icon
-            [style]="
-              'w-5 text-stone-400 transition-all group-hover:stroke-pink-800'
-            "
-            [icon]="TRASH"
-          />
-        </button>
-        <app-link-button url="/">
+        <app-link-button [url]="'/delete-task/' + id">
+          <app-svg-icon [style]="'w-5'" [icon]="TRASH"/>
+        </app-link-button>
+        <app-link-button [url]="'/edit-task/' + id">
           <app-svg-icon [style]="'w-5'" [icon]="EDIT"/>
         </app-link-button>
       </div>
@@ -47,7 +39,9 @@ import { SvgIconComponent } from '../svg-icon/svg-icon.component';
   `,
 })
 export class TaskComponent {
+  @Input() id = '';
   @Input() description = '';
+  @Input() isCompleted = false;
   TRASH = Icons.TRASH;
   EDIT = Icons.EDIT;
 }
