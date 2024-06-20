@@ -1,5 +1,24 @@
 {
-  "users": [],
-
-  "tasks": []
+  "users": [
+    {
+      "id": "72299",
+      "name": "Moises Teixeira",
+      "email": "moises@gmail.com",
+      "password": "moises"
+    },
+    {
+      "id": "20036",
+      "name": "Eliezer A",
+      "email": "elieze@gmail.com",
+      "password": "123456"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "ed3d",
+      "description": "Feijão A",
+      "completed": true,
+      "userId": null
+    }
+  ]
 }
