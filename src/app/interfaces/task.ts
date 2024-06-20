@@ -1,5 +1,6 @@
 export interface ITask {
-  id: number,
+  id: string,
   description: string,
   completed: boolean,
+  userId: number,
 }
