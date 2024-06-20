@@ -1,0 +1,30 @@
+<div class="flex items-center h-20">
+  <app-title name="Adicionar Task" />
+</div>
+
+<form
+  [formGroup]="newTaskForm"
+  (ngSubmit)="onSubmit()"
+  class="flex flex-col gap-4"
+>
+<input
+  id="description"
+  name="description"
+  formControlName="description"
+  type="text"
+  placeholder="Enter your task"
+  pattern="^(\s?[A-ZÀ-Ú][a-zà-ú]*)+(\s[a-zà-ú]*)?(\s[A-ZÀ-Ú][a-zà-ú]*)+"
+  required
+  class="
+    w-full h-10 px-3 rounded outline-none transition-all bg-stone-800
+    placeholder-stone-500 focus:ring-1 focus:ring-sky-500
+    invalid:ring-pink-500 invalid:text-pink-600
+    focus:invalid:ring-pink-500
+  "
+>
+  @if (description.invalid && description.touched) {
+    <p class="text-xs md:text-sm text-pink-500">Enter a valid task name.</p>
+  }
+
+  <app-button label="Submit" [isDisabled]="!newTaskForm.valid" />
+</form>
