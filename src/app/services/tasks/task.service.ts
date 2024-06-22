@@ -17,11 +17,7 @@ export class TasksService {
   // }
 
   async create(task: ITask): Promise<any> {
-    try {
-      return await lastValueFrom(this.http.post(BASE_URL, task));
-    } catch (error) {
-      console.log('Error', error);
-    }
+    return await lastValueFrom(this.http.post(BASE_URL, task));
   }
 
   getAll(): Observable<ITask[]> {
@@ -36,7 +32,7 @@ export class TasksService {
     return this.http.put<ITask>(`${BASE_URL}/${task.id}`, task);
   }
 
-  delete(task: ITask): Observable<any> {
-    return this.http.delete<any>(`${BASE_URL}/${task.id}`);
+  delete(id: string): Observable<any> {
+    return this.http.delete<any>(`${BASE_URL}/${id}`);
   }
 }

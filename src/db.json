@@ -11,12 +11,24 @@
       "name": "Eliezer A",
       "email": "elieze@gmail.com",
       "password": "123456"
+    },
+    {
+      "id": "67926",
+      "name": "Moises A",
+      "email": "moises.1999@alunos.utfpr.edu.br",
+      "password": "123456"
+    },
+    {
+      "id": "63998",
+      "name": "Aaaa B",
+      "email": "aaa@aaa.com",
+      "password": "123456"
     }
   ],
   "tasks": [
     {
-      "id": "ed3d",
-      "description": "Feijão A",
+      "id": "3933",
+      "description": "Nani N",
       "completed": true,
       "userId": null
     }
