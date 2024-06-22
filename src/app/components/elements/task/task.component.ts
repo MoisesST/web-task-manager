@@ -1,9 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { NgClass } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { LinkButtonComponent } from '../link-button/link-button.component';
 import { Icons } from '../../../utils/icons';
 import { SvgIconComponent } from '../svg-icon/svg-icon.component';
+import { TasksService } from '../../../services/tasks/task.service';
 
 @Component({
   selector: 'app-task',
@@ -19,27 +21,24 @@ import { SvgIconComponent } from '../svg-icon/svg-icon.component';
         <p
           [ngClass]="{
             'decoration-2 text-white decoration-pink-600 line-through'
-            : true
+            : isCompleted
           }"
           class="line-clamp-2"
         >
-            {{ description }}
-            Lorem ipsum dolor ptatum dolor autem cupiditate ipsum dolor ptatum
-            dolor autem cupiditate ipsum dolor ptatum dolor ipsum dolor ptatum
-            dolor
+          {{ description }}
         </p>
       </div>
 
       <div class="flex flex-col gap-3 items-center justify-center">
-        <button class="group">
-          <app-svg-icon
-            [style]="
-              'w-5 text-stone-400 transition-all group-hover:stroke-pink-800'
-            "
-            [icon]="TRASH"
-          />
+        <button class="group" (click)="delete(id)">
+        <app-svg-icon
+          [style]="
+            'w-5 text-stone-400 transition-all group-hover:stroke-pink-800'
+          "
+          [icon]="TRASH"
+        />
         </button>
-        <app-link-button url="/">
+        <app-link-button [url]="'/edit-task/' + id">
           <app-svg-icon [style]="'w-5'" [icon]="EDIT"/>
         </app-link-button>
       </div>
@@ -47,7 +46,19 @@ import { SvgIconComponent } from '../svg-icon/svg-icon.component';
   `,
 })
 export class TaskComponent {
+  @Input() id = '';
   @Input() description = '';
+  @Input() isCompleted = false;
   TRASH = Icons.TRASH;
   EDIT = Icons.EDIT;
+
+  constructor(private taskService: TasksService, private router: Router) {}
+
+  delete(id: string): void {
+    this.taskService.delete(id).subscribe({
+      next: () => location.reload(),
+      error: (error) => console.log('Error deleting tasks', error),
+      complete: () => console.log('Delete works'),
+    });
+  }
 }

@@ -1,90 +1,45 @@
-<form class="flex max-h-20 p-3 bg-stone-700 rounded">
+<div class="flex items-center h-20">
+  <app-title name="Update Task" />
+</div>
+
+<form
+  [formGroup]="updateTaskForm"
+  (ngSubmit)="onSubmit()"
+  class="flex flex-col gap-4"
+>
+  <p class="text-center">Completed task ID: {{ task.id }}?</p>
   <input
+    id="completed"
+    name="completed"
+    formControlName="completed"
+    [(ngModel)]="task.completed"
     type="checkbox"
-    name="todo[1]"
-    checked
     class="h-6 peer focus:accent-sky-500"
   >
-
-  <textarea
-    name=""
-    cols="70"
-    rows="4"
+  <input
+    id="description"
+    name="description"
+    formControlName="description"
+    type="text"
+    [(ngModel)]="task.description"
+    placeholder="Enter your task"
+    pattern="^(\s?[A-ZÀ-Ú][a-zà-ú]*)+(\s[a-zà-ú]*)?(\s[A-ZÀ-Ú][a-zà-ú]*)+"
+    required
+    [ngClass]="{
+      'peer-checked:decoration-2 peer-checked:text-white peer-checked:decoration-pink-600 peer-checked:line-through'
+      : task.completed
+    }"
     class="
-      mx-3 px-1 resize-none overflow-auto text-xs sm:text-sm
-      text-justify text-white bg-stone-700 rounded
-      peer-checked:decoration-2 peer-checked:text-white peer-checked:decoration-pink-600
-      peer-checked:line-through focus:outline-none focus:bg-stone-600
-      [&::-webkit-scrollbar]:hidden
+      w-full h-10 px-3 rounded outline-none line-clamp-2 transition-all bg-stone-800
+      placeholder-stone-500 focus:ring-1 focus:ring-sky-500
+      invalid:ring-pink-500 invalid:text-pink-600
+      focus:invalid:ring-pink-500
     "
   >
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quasi esse distinctio facere officia inventore, unde non odit aut consequuntur provident id cumque, sequi, hic accusamus doloribus minima repellat sapiente?
-  </textarea>
 
-  <button
-    type="submit"
-    class="h-6 rounded outline-none focus:text-pink-600"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="currentColor"
-      class="w-4 transition-all hover:stroke-pink-600"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="
-          m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107
-          1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244
-          2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456
-          0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114
-          1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5
-          0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32
-          0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0
-          0 0-7.5 0
-        "
-      />
-    </svg>
-  </button>
+  @if (description.invalid && description.touched) {
+    <p class="text-xs md:text-sm text-pink-500">Enter a valid task name.</p>
+  }
+
+  <app-button label="Submit" [isDisabled]="!updateTaskForm.valid" />
 </form>
-
-<button
-  type="submit"
-  class="
-    w-full h-10 my-6 text-sm font-semibold uppercase bg-sky-500 rounded
-    outline-none transition-all hover:bg-sky-600 focus:bg-sky-600
-  "
->
-  Save
-</button>
-
-
-<!-- <footer class="flex flex-auto w-full mx-auto border-t-2 border-gray-300">
-  <a
-    routerLink="/list-tasks"
-    class="
-      flex gap-1 justify-center items-center h-10 mt-4 mb-3 py-1 px-3
-      text-xs sm:text-sm font-semibold bg-stone-800 rounded outline-none
-      transition-all focus:bg-stone-700 hover:bg-stone-700
-    "
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="3"
-      stroke="currentColor"
-      class="w-3 sm:w-4"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
-      />
-    </svg>
-    Back
-  </a>
-</footer> -->

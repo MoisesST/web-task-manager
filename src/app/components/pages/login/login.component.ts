@@ -9,23 +9,21 @@ import { UsersService } from './../../../services/users/users.service';
 import { IUser } from '../../../interfaces/user';
 
 @Component({
-  selector: 'app-signup',
+  selector: 'app-login',
   standalone: true,
   imports: [TitleComponent, ButtonComponent, ReactiveFormsModule],
-  templateUrl: './signup.component.html',
+  templateUrl: './login.component.html',
 })
-export class SignupComponent implements OnInit {
+export class LoginComponent implements OnInit {
   users: IUser[] = [];
-  signupForm!: FormGroup;
+  loginForm!: FormGroup;
 
   constructor(
     private storageService: StorageService,
     private userService: UsersService,
     private router: Router
   ) {
-    this.signupForm = new FormGroup({
-      id: new FormControl(Math.floor(Math.random() * 100000)),
-      name: new FormControl(''),
+    this.loginForm = new FormGroup({
       email: new FormControl(''),
       password: new FormControl(''),
     });
@@ -43,30 +41,26 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  get name() : string | any {
-    return this.signupForm.get('name')!;
-  }
-
   get email() : string | any {
-    return this.signupForm.get('email')!;
+    return this.loginForm.get('email')!;
   }
 
   get password() : string | any {
-    return this.signupForm.get('password')!;
+    return this.loginForm.get('password')!;
   }
 
   onSubmit() {
-    if (this.signupForm.valid) {
-      const user = this.signupForm.value;
+    if (this.loginForm.valid) {
+      const user = this.loginForm.value;
 
-      const foundUser = this.users.find(u => u.email == user.email);
+      const foundUser = this.users.find(
+        u => u.email == user.email && u.password == user.password
+      );
 
-      if (foundUser != undefined) {
-        alert('Error creating user');
+      if (foundUser == undefined) {
+        alert('Try again incorrect username or password!!');
       } else {
         this.storageService.saveUser(user);
-        const data = this.signupForm.value;
-        this.userService.create(data);
         this.router.navigate(['/home']);
         setTimeout(() => {
           location.reload();

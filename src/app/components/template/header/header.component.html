@@ -10,7 +10,7 @@
     </app-link-button>
     @if (!logged) {
       <app-link-button label="Sign Up" url="/signup"/>
-      <app-link-button label="Log In" url="/"/>
+      <app-link-button label="Log In" url="/login"/>
     } @else {
       <app-link-button url="/create-task" label="Create Task">
         <app-svg-icon [style]="'w-6'" [icon]="CREATE"/>
@@ -19,13 +19,16 @@
       <button
         (click)="onLogout()"
         class="
-          flex gap-2 justify-center items-center mx-1 text-xs sm:text-sm font-semibold
-          outline-none transition-all hover:text-sky-500
+          flex gap-2 justify-center items-center mx-1 text-xs sm:text-sm
+          font-semibold outline-none transition-all hover:text-sky-500
         "
       >
         <app-svg-icon [style]="'w-6'" [icon]="LOGOUT"/>
         <span class="font-medium">LogOut</span>
       </button>
+      <app-link-button url="/profile">
+        <img [src]="getImage()" alt="Avatar" class="w-10 rounded-full">
+      </app-link-button>
     }
   </nav>
 
@@ -42,33 +45,39 @@
 
     @if (showMenu) {
       <div
-        class="
-          flex flex-col w-full space-y-4  absolute top-full  pb-4 z-50 bg-black
-        "
+        (click)="toggleMenu()"
+        class="flex flex-col absolute top-full w-full pb-4 z-50 bg-transparent"
       >
-        <app-link-button url="/home" label="Home">
-          <app-svg-icon [style]="'w-6'" [icon]="HOME"/>
-        </app-link-button>
-        @if (!logged) {
-          <app-link-button label="Sign Up" url="/signup"/>
-          <app-link-button label="Log In" url="/"/>
-        } @else {
-          <app-link-button url="/create-task" label="Create Task">
-            <app-svg-icon [style]="'w-6'" [icon]="CREATE"/>
+        <div class="flex flex-col max-h-min w-full space-y-4  pb-4 bg-black">
+          <app-link-button url="/home" label="Home">
+            <app-svg-icon [style]="'w-6'" [icon]="HOME"/>
           </app-link-button>
+          @if (!logged) {
+            <app-link-button label="Sign Up" url="/signup"/>
+            <app-link-button label="Log In" url="/login"/>
+          } @else {
+            <app-link-button url="/create-task" label="Create Task">
+              <app-svg-icon [style]="'w-6'" [icon]="CREATE"/>
+            </app-link-button>
 
           <button
             (click)="onLogout()"
             class="
-              flex gap-2 justify-center items-center mx-1 text-xs sm:text-sm font-semibold
-              outline-none transition-all hover:text-sky-500
+              flex gap-2 justify-center items-center mx-1 text-xs sm:text-sm
+              font-semibold outline-none transition-all hover:text-sky-500
             "
           >
             <app-svg-icon [style]="'w-6'" [icon]="LOGOUT"/>
             <span class="font-medium">LogOut</span>
           </button>
+          <app-link-button url="/profile">
+            <div class="flex justify-center items-center w-full">
+              <img [src]="getImage()" alt="Avatar" class="w-10 rounded-full">
+            </div>
+          </app-link-button>
         }
       </div>
+    </div>
     }
   </nav>
 </header>
