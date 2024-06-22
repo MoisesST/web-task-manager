@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 import { TitleComponent } from '../../../elements/title/title.component';
-import { InputComponent } from '../../../elements/input/input.component';
 import { ButtonComponent } from '../../../elements/button/button.component';
 import { TasksService } from '../../../../services/tasks/task.service';
 import { StorageService } from '../../../../services/users/storage.service';
@@ -13,7 +12,6 @@ import { StorageService } from '../../../../services/users/storage.service';
   standalone: true,
   imports: [
     TitleComponent,
-    InputComponent,
     ButtonComponent,
     ReactiveFormsModule
   ],

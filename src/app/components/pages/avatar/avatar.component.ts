@@ -16,7 +16,7 @@ import { AvatarService } from '../../../services/avatar/avatar.service';
       <img [src]="avatar.image" alt="Avatar" class="rounded-full">
     </div>
 
-    <div class="flex gap-4 mt-10">
+    <div class="flex flex-col gap-4 mt-10">
       <button
         (click)="generateRandomAvatar()"
         class="
@@ -25,6 +25,7 @@ import { AvatarService } from '../../../services/avatar/avatar.service';
       >
         Generate
       </button>
+      <span class="text-center">And</span>
       <button
         (click)="changeAvatar()"
         class="

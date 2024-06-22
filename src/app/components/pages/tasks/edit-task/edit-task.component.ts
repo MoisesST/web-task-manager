@@ -53,7 +53,6 @@ export class EditTaskComponent implements OnInit {
 
   onSubmit() {
     if (this.updateTaskForm.valid) {
-      const data = this.updateTaskForm.value;
       this.taskService.update(this.task).subscribe({
         next: () => this.router.navigate(['/home']),
         error: (error) => console.log('Error updating tasks', error),
